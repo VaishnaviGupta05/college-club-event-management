@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="College Club Event Management website for browsing events and admin management."
+    />
+    <title>CampusPulse | College Club Events</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-bar">
+        <div class="brand">
+          <span class="brand-mark">C</span>
+          <span>CampusPulse</span>
+        </div>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="#home">Home</a>
+          <a href="#events">Events</a>
+          <a href="#admin">Admin</a>
+        </nav>
+        <button class="primary-btn" id="show-admin">Admin Panel</button>
+      </div>
+    </header>
+
+    <main>
+      <section id="home" class="hero">
+        <div class="container hero-layout">
+          <div class="hero-copy">
+            <p class="eyebrow">Empowering Student Life</p>
+            <h1>Discover exciting campus events and clubs.</h1>
+            <p class="hero-text">
+              From hackathons and cultural nights to workshops and sports festivals,
+              CampusPulse helps students stay connected to everything happening on
+              campus.
+            </p>
+            <div class="hero-actions">
+              <a href="#events" class="primary-btn">Explore Events</a>
+              <a href="#admin" class="secondary-btn">View Admin</a>
+            </div>
+            <div class="hero-stats">
+              <div>
+                <strong>30+</strong>
+                <span>Events</span>
+              </div>
+              <div>
+                <strong>12</strong>
+                <span>Clubs</span>
+              </div>
+              <div>
+                <strong>1500+</strong>
+                <span>Students</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="featured-panel" id="featured-event-panel" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section class="clubs-intro">
+        <div class="container intro-grid">
+          <div>
+            <p class="section-tag">Campus Clubs</p>
+            <h2>Build skills, friendships, and unforgettable memories.</h2>
+          </div>
+          <div>
+            <p>
+              Our college community brings together innovators, creators, athletes,
+              and organizers through a vibrant mix of club experiences and student-led
+              events.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="events" class="events-section">
+        <div class="container">
+          <div class="section-header">
+            <div>
+              <p class="section-tag">Upcoming Events</p>
+              <h2>Find what's happening next</h2>
+            </div>
+          </div>
+
+          <div class="event-toolbar">
+            <label class="search-box" aria-label="Search by event name">
+              <span>Search</span>
+              <input type="search" id="event-search" placeholder="Search events by name" />
+            </label>
+
+            <label class="filter-box" aria-label="Filter by category">
+              <span>Category</span>
+              <select id="category-filter">
+                <option value="all">All categories</option>
+                <option value="Tech">Tech</option>
+                <option value="Cultural">Cultural</option>
+                <option value="Workshop">Workshop</option>
+                <option value="Sports">Sports</option>
+                <option value="Social">Social</option>
+              </select>
+            </label>
+          </div>
+
+          <div id="events-list" class="event-grid" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section id="admin" class="admin-section">
+        <div class="container admin-shell">
+          <div class="admin-header">
+            <div>
+              <p class="section-tag">Admin Dashboard</p>
+              <h2>Manage club events and registrations</h2>
+            </div>
+          </div>
+
+          <div class="admin-grid">
+            <div class="admin-card">
+              <h3 id="event-form-title">Add New Event</h3>
+              <form id="event-form" class="stacked-form">
+                <input type="hidden" id="event-id" />
+
+                <label>
+                  Event Name
+                  <input type="text" id="event-name" placeholder="e.g. AI Innovation Summit" required />
+                </label>
+
+                <label>
+                  Category
+                  <select id="event-category" required>
+                    <option value="Tech">Tech</option>
+                    <option value="Cultural">Cultural</option>
+                    <option value="Workshop">Workshop</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Social">Social</option>
+                  </select>
+                </label>
+
+                <div class="dual-field">
+                  <label>
+                    Date
+                    <input type="date" id="event-date" required />
+                  </label>
+                  <label>
+                    Time
+                    <input type="time" id="event-time" required />
+                  </label>
+                </div>
+
+                <label>
+                  Venue
+                  <input type="text" id="event-venue" placeholder="Auditorium, Lab 3, Ground A" required />
+                </label>
+
+                <label>
+                  Description
+                  <textarea id="event-description" rows="4" placeholder="Tell students about the event" required></textarea>
+                </label>
+
+                <label class="checkbox-row">
+                  <input type="checkbox" id="event-featured" />
+                  Mark as featured event
+                </label>
+
+                <div class="form-actions">
+                  <button type="submit" class="primary-btn">Save Event</button>
+                  <button type="button" class="secondary-btn" id="cancel-edit">Cancel</button>
+                </div>
+              </form>
+            </div>
+
+            <div class="admin-card">
+              <h3>All Events</h3>
+              <div id="admin-events-list" class="admin-list" aria-live="polite"></div>
+            </div>
+          </div>
+
+          <div class="admin-card registrations-card">
+            <div class="registrations-head">
+              <h3>Registered Students</h3>
+              <label class="search-box small-search" aria-label="Search registrations">
+                <span>Search</span>
+                <input type="search" id="registration-search" placeholder="Search by name or email" />
+              </label>
+            </div>
+            <div id="registrations-list" class="registrations-list" aria-live="polite"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-wrap">
+        <p>© 2026 CampusPulse. Built for vibrant student communities.</p>
+      </div>
+    </footer>
+
+    <div id="registration-modal" class="modal hidden" aria-hidden="true">
+      <div class="modal-backdrop" data-close-modal="true"></div>
+      <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="register-title">
+        <button class="close-btn" type="button" aria-label="Close registration form" data-close-modal="true">×</button>
+        <h3 id="register-title">Register for Event</h3>
+        <form id="registration-form" class="stacked-form">
+          <input type="hidden" id="selected-event-id" />
+
+          <label>
+            Full Name
+            <input type="text" id="student-name" placeholder="Enter your name" required />
+          </label>
+
+          <label>
+            Email Address
+            <input type="email" id="student-email" placeholder="name@example.com" required />
+          </label>
+
+          <div class="dual-field">
+            <label>
+              College / Department
+              <input type="text" id="student-college" placeholder="College or department" required />
+            </label>
+            <label>
+              Year
+              <select id="student-year" required>
+                <option value="">Select Year</option>
+                <option value="1st Year">1st Year</option>
+                <option value="2nd Year">2nd Year</option>
+                <option value="3rd Year">3rd Year</option>
+                <option value="4th Year">4th Year</option>
+                <option value="Postgraduate">Postgraduate</option>
+              </select>
+            </label>
+          </div>
+
+          <label>
+            Phone Number
+            <input type="tel" id="student-phone" placeholder="Enter phone number" required />
+          </label>
+
+          <div class="form-actions modal-actions">
+            <button type="submit" class="primary-btn">Submit Registration</button>
+            <button type="button" class="secondary-btn" data-close-modal="true">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="toast" class="toast" aria-live="assertive"></div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
