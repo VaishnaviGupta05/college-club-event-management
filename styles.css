@@ -1,744 +1,526 @@
-* {
-  box-sizing: border-box;
-}
-
-:root {
-  --bg: #f4f7fb;
-  --surface: #ffffff;
-  --surface-strong: #ecf3ff;
-  --primary: #4f46e5;
-  --primary-dark: #3730a3;
-  --accent: #f59e0b;
-  --text: #111827;
-  --muted: #6b7280;
-  --line: #dfe7f5;
-  --success: #10b981;
-  --danger: #ef4444;
-  --shadow: 0 18px 45px rgba(79, 70, 229, 0.12);
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  margin: 0;
-  font-family: "Inter", sans-serif;
-  background: linear-gradient(180deg, #f8faff 0%, #eef4ff 100%);
-  color: var(--text);
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-button,
-input,
-select,
-textarea {
-  font: inherit;
-}
-
-img {
-  max-width: 100%;
-  display: block;
-}
-
-.container {
-  width: min(1160px, calc(100% - 32px));
-  margin: 0 auto;
-}
-
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  backdrop-filter: blur(12px);
-  background: rgba(255, 255, 255, 0.88);
-  border-bottom: 1px solid rgba(223, 231, 245, 0.9);
-}
-
-.nav-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  min-height: 76px;
-  gap: 18px;
-}
-
-.brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  font-size: 1.2rem;
-}
-
-.brand-mark {
-  width: 34px;
-  height: 34px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  background: linear-gradient(135deg, var(--primary), #7c3aed);
-  color: white;
-  box-shadow: var(--shadow);
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 26px;
-  color: var(--muted);
-  font-weight: 600;
-}
-
-.nav-links a:hover {
-  color: var(--primary);
-}
-
-.primary-btn,
-.secondary-btn,
-.close-btn,
-.action-btn {
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.primary-btn,
-.secondary-btn {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 48px;
-  padding: 0 20px;
-  font-weight: 700;
-}
-
-.primary-btn {
-  background: linear-gradient(135deg, var(--primary), #5b5ce6);
-  color: white;
-  box-shadow: 0 15px 30px rgba(79, 70, 229, 0.25);
-}
-
-.secondary-btn {
-  background: #eef2ff;
-  color: var(--primary-dark);
-}
-
-.primary-btn:hover,
-.secondary-btn:hover,
-.action-btn:hover,
-.close-btn:hover {
-  transform: translateY(-1px);
-}
-
-.hero {
-  padding: 72px 0 42px;
-}
-
-.hero-layout {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 32px;
-  align-items: center;
-}
-
-.eyebrow,
-.section-tag {
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-size: 0.73rem;
-  font-weight: 700;
-  color: var(--primary);
-  margin: 0 0 14px;
-}
-
-.hero-copy h1,
-.section-header h2,
-.clubs-intro h2,
-.admin-header h2 {
-  margin: 0 0 18px;
-  letter-spacing: -0.06em;
-  line-height: 1.08;
-}
-
-.hero-copy h1 {
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
-}
-
-.hero-text {
-  max-width: 640px;
-  color: var(--muted);
-  font-size: 1.05rem;
-  line-height: 1.7;
-  margin: 0;
-}
-
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  margin-top: 28px;
-}
-
-.hero-stats {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 28px;
-  margin-top: 28px;
-}
-
-.hero-stats div {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.hero-stats strong {
-  font-size: 1.8rem;
-  letter-spacing: -0.06em;
-}
-
-.hero-stats span {
-  color: var(--muted);
-  font-size: 0.92rem;
-}
-
-.featured-panel {
-  background: linear-gradient(160deg, #1f2a44 0%, #312e81 100%);
-  border-radius: 28px;
-  box-shadow: var(--shadow);
-  padding: 26px;
-  min-height: 420px;
-  position: relative;
-  overflow: hidden;
-}
-
-.featured-panel::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at top right, rgba(245, 158, 11, 0.4), transparent 28%);
-}
-
-.featured-content {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  justify-content: space-between;
-}
-
-.featured-tag {
-  display: inline-flex;
-  width: fit-content;
-  padding: 8px 12px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.12);
-  color: #ecfdf5;
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-}
-
-.featured-content h3 {
-  margin: 18px 0 10px;
-  font-size: clamp(1.8rem, 3vw, 2.6rem);
-  line-height: 1.1;
-  color: white;
-  letter-spacing: -0.06em;
-}
-
-.featured-meta,
-.event-meta,
-.tag-chip {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  align-items: center;
-}
-
-.featured-meta {
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 0.92rem;
-}
-
-.featured-description {
-  margin: 18px 0 0;
-  color: rgba(255, 255, 255, 0.8);
-  line-height: 1.7;
-}
-
-.featured-actions {
-  display: flex;
-  gap: 12px;
-  margin-top: 24px;
-}
-
-.featured-actions .primary-btn {
-  background: white;
-  color: var(--primary);
-  box-shadow: none;
-}
-
-.clubs-intro {
-  padding: 22px 0 32px;
-}
-
-.intro-grid {
-  display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: 22px;
-  align-items: center;
-}
-
-.clubs-intro h2,
-.section-header h2,
-.admin-header h2 {
-  font-size: clamp(2rem, 3.5vw, 3rem);
-}
-
-.clubs-intro p:last-child {
-  color: var(--muted);
-  line-height: 1.8;
-  margin: 0;
-  font-size: 1.02rem;
-}
-
-.events-section,
-.admin-section {
-  padding: 36px 0 56px;
-}
-
-.section-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 24px;
-}
-
-.event-toolbar {
-  display: grid;
-  grid-template-columns: 1fr 300px;
-  gap: 18px;
-  margin-bottom: 26px;
-}
-
-.search-box,
-.filter-box {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  color: var(--muted);
-  font-weight: 600;
-}
-
-.search-box input,
-.filter-box select,
-.stacked-form input,
-.stacked-form select,
-.stacked-form textarea {
-  width: 100%;
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  min-height: 48px;
-  background: rgba(255, 255, 255, 0.8);
-  padding: 0 14px;
-  color: var(--text);
-  outline: none;
-}
-
-.search-box input:focus,
-.filter-box select:focus,
-.stacked-form input:focus,
-.stacked-form select:focus,
-.stacked-form textarea:focus {
-  border-color: rgba(79, 70, 229, 0.7);
-  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.08);
-}
-
-.event-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 22px;
-}
-
-.event-card {
-  background: var(--surface);
-  border: 1px solid rgba(223, 231, 245, 0.9);
-  border-radius: 22px;
-  padding: 18px;
-  box-shadow: 0 18px 30px rgba(15, 23, 42, 0.04);
-}
-
-.event-card-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 12px;
-}
-
-.tag-chip {
-  display: inline-flex;
-  align-items: center;
-  width: fit-content;
-  background: rgba(79, 70, 229, 0.08);
-  color: var(--primary-dark);
-  padding: 8px 10px;
-  border-radius: 999px;
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.event-card h3 {
-  margin: 0;
-  font-size: 1.5rem;
-  letter-spacing: -0.05em;
-}
-
-.event-meta {
-  color: var(--muted);
-  font-size: 0.92rem;
-  margin-top: 14px;
-  line-height: 1.7;
-}
-
-.event-description {
-  color: var(--muted);
-  margin: 14px 0 18px;
-  line-height: 1.7;
-}
-
-.event-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-top: 18px;
-}
-
-.action-btn {
-  min-height: 42px;
-  padding: 0 16px;
-  background: linear-gradient(135deg, var(--primary), #5b5ce6);
-  color: white;
-  font-weight: 700;
-}
-
-.event-card .mini-text {
-  color: var(--muted);
-  font-size: 0.82rem;
-}
-
-.admin-shell {
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
-}
-
-.admin-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 22px;
-}
-
-.admin-card {
-  background: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(223, 231, 245, 0.9);
-  border-radius: 22px;
-  padding: 22px;
-  box-shadow: 0 18px 30px rgba(15, 23, 42, 0.04);
-}
-
-.admin-card h3 {
-  margin: 0 0 18px;
-  font-size: 1.45rem;
-  letter-spacing: -0.05em;
-}
-
-.stacked-form {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.stacked-form label {
-  display: block;
-  color: var(--muted);
-  font-weight: 600;
-}
-
-.stacked-form input,
-.stacked-form select,
-.stacked-form textarea {
-  margin-top: 8px;
-  padding-top: 12px;
-  padding-bottom: 12px;
-}
-
-.dual-field {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-}
-
-.checkbox-row {
-  display: flex !important;
-  align-items: center;
-  gap: 10px;
-  color: var(--text) !important;
-}
-
-.checkbox-row input {
-  width: auto;
-  margin-top: 0;
-  accent-color: var(--primary);
-}
-
-.form-actions {
-  display: flex;
-  gap: 12px;
-  margin-top: 8px;
-}
-
-.admin-list,
-.registrations-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.list-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 18px;
-  border: 1px solid var(--line);
-  background: rgba(244, 247, 251, 0.9);
-  border-radius: 14px;
-  padding: 14px 16px;
-}
-
-.list-item h4 {
-  margin: 0 0 6px;
-  font-size: 1rem;
-}
-
-.list-meta {
-  color: var(--muted);
-  font-size: 0.82rem;
-  line-height: 1.6;
-}
-
-.list-actions {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-}
-
-.list-action-btn {
-  min-height: 38px;
-  padding: 0 12px;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  background: white;
-  color: var(--text);
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.list-action-btn.delete {
-  color: var(--danger);
-  border-color: rgba(239, 68, 68, 0.25);
-}
-
-.registrations-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: end;
-  gap: 18px;
-  margin-bottom: 16px;
-}
-
-.small-search {
-  min-width: min(380px, 100%);
-}
-
-.registration-row {
-  display: grid;
-  grid-template-columns: 1.2fr 1.1fr 1fr 0.8fr;
-  gap: 14px;
-  align-items: center;
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  padding: 14px 16px;
-  background: rgba(244, 247, 251, 0.9);
-}
-
-.registration-row strong {
-  display: block;
-  margin-bottom: 4px;
-}
-
-.registration-row span {
-  color: var(--muted);
-  font-size: 0.82rem;
-  display: block;
-}
-
-.site-footer {
-  background: #0f172a;
-  color: rgba(255, 255, 255, 0.8);
-  padding: 22px 0;
-}
-
-.footer-wrap {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.modal {
-  position: fixed;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  z-index: 50;
-}
-
-.modal.hidden {
-  display: none;
-}
-
-.modal-backdrop {
-  position: absolute;
-  inset: 0;
-  background: rgba(15, 23, 42, 0.55);
-}
-
-.modal-card {
-  position: relative;
-  width: min(560px, calc(100% - 24px));
-  background: white;
-  border-radius: 24px;
-  padding: 24px 22px 18px;
-  box-shadow: 0 28px 60px rgba(15, 23, 42, 0.22);
-  z-index: 1;
-}
-
-.modal-card h3 {
-  margin: 0 0 18px;
-  font-size: 1.6rem;
-  letter-spacing: -0.05em;
-}
-
-.close-btn {
-  position: absolute;
-  top: 18px;
-  right: 18px;
-  width: 36px;
-  height: 36px;
-  font-size: 1.8rem;
-  background: #f3f4f6;
-  color: var(--text);
-}
-
-.modal-actions {
-  margin-top: 4px;
-}
-
-.toast {
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-  background: #0f172a;
-  color: white;
-  padding: 12px 16px;
-  border-radius: 12px;
-  box-shadow: 0 18px 35px rgba(15, 23, 42, 0.2);
-  opacity: 0;
-  transform: translateY(12px);
-  transition: opacity 0.25s ease, transform 0.25s ease;
-  z-index: 70;
-  pointer-events: none;
-}
-
-.toast.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.empty-state {
-  border: 1px dashed var(--line);
-  background: rgba(255, 255, 255, 0.6);
-  border-radius: 14px;
-  padding: 22px;
-  text-align: center;
-  color: var(--muted);
-}
-
-@media (max-width: 980px) {
-  .hero-layout,
-  .intro-grid,
-  .admin-grid,
-  .event-grid {
-    grid-template-columns: 1fr;
+const STORAGE_KEYS = {
+  events: 'campuspulse-events',
+  registrations: 'campuspulse-registrations'
+};
+
+const defaultEvents = [
+  {
+    id: 'evt-1',
+    name: 'AI Innovation Summit',
+    category: 'Tech',
+    date: '2026-10-08',
+    time: '10:00',
+    venue: 'Innovation Hall',
+    description: 'Explore AI-driven ideas, projects, and startup pitches through keynote sessions and live demos.',
+    featured: true
+  },
+  {
+    id: 'evt-2',
+    name: 'Cultural Night 2026',
+    category: 'Cultural',
+    date: '2026-10-20',
+    time: '18:30',
+    venue: 'Main Auditorium',
+    description: 'Celebrate dance, music, and art with a fun-filled campus showcase of talent and creativity.',
+    featured: false
+  },
+  {
+    id: 'evt-3',
+    name: 'Design Thinking Bootcamp',
+    category: 'Workshop',
+    date: '2026-10-15',
+    time: '13:00',
+    venue: 'Creative Studio',
+    description: 'A hands-on workshop to help students solve real problems using human-centered design methods.',
+    featured: false
+  },
+  {
+    id: 'evt-4',
+    name: 'Inter-College Sports Fest',
+    category: 'Sports',
+    date: '2026-11-02',
+    time: '08:30',
+    venue: 'Campus Sports Ground',
+    description: 'Compete, cheer, and connect across teams in football, basketball, athletics, and more.',
+    featured: false
+  },
+  {
+    id: 'evt-5',
+    name: 'Startup Connect Mixer',
+    category: 'Social',
+    date: '2026-11-08',
+    time: '17:00',
+    venue: 'Conference Lounge',
+    description: 'Meet founders, student entrepreneurs, and mentors for networking and collaboration.',
+    featured: false
   }
+];
 
-  .event-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+const defaultRegistrations = [
+  {
+    id: 'reg-1',
+    eventId: 'evt-1',
+    eventName: 'AI Innovation Summit',
+    name: 'Aarav Sharma',
+    email: 'aarav@example.com',
+    college: 'Computer Science Department',
+    year: '3rd Year',
+    phone: '+91 98765 43210'
+  },
+  {
+    id: 'reg-2',
+    eventId: 'evt-4',
+    eventName: 'Inter-College Sports Fest',
+    name: 'Meera Iyer',
+    email: 'meera@example.com',
+    college: 'School of Business',
+    year: '2nd Year',
+    phone: '+91 91234 56789'
+  }
+];
+
+const eventSearchInput = document.getElementById('event-search');
+const categoryFilterSelect = document.getElementById('category-filter');
+const eventList = document.getElementById('events-list');
+const featuredEventPanel = document.getElementById('featured-event-panel');
+const registrationForm = document.getElementById('registration-form');
+const modal = document.getElementById('registration-modal');
+const selectedEventIdInput = document.getElementById('selected-event-id');
+const eventForm = document.getElementById('event-form');
+const adminEventsList = document.getElementById('admin-events-list');
+const registrationSearchInput = document.getElementById('registration-search');
+const registrationsList = document.getElementById('registrations-list');
+const eventFormTitle = document.getElementById('event-form-title');
+const cancelEditButton = document.getElementById('cancel-edit');
+const toast = document.getElementById('toast');
+
+let currentSelectedEventId = null;
+let editingEventId = null;
+
+function getStoredData(key, fallback) {
+  const rawValue = localStorage.getItem(key);
+  if (!rawValue) return fallback;
+
+  try {
+    const parsed = JSON.parse(rawValue);
+    return Array.isArray(parsed) ? parsed : fallback;
+  } catch (error) {
+    console.error(`Invalid JSON in ${key}:`, error);
+    return fallback;
   }
 }
 
-@media (max-width: 700px) {
-  .nav-bar {
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 16px 0;
-  }
-
-  .nav-links {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .event-toolbar,
-  .dual-field,
-  .registrations-head {
-    grid-template-columns: 1fr;
-    display: grid;
-  }
-
-  .event-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .registration-row,
-  .list-item {
-    grid-template-columns: 1fr;
-    display: grid;
-  }
-
-  .event-footer,
-  .form-actions,
-  .list-actions {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .site-header {
-    position: static;
-  }
+function setStoredData(key, data) {
+  localStorage.setItem(key, JSON.stringify(data));
 }
+
+function loadEvents() {
+  return getStoredData(STORAGE_KEYS.events, defaultEvents);
+}
+
+function loadRegistrations() {
+  return getStoredData(STORAGE_KEYS.registrations, defaultRegistrations);
+}
+
+function saveEvents(events) {
+  setStoredData(STORAGE_KEYS.events, events);
+}
+
+function saveRegistrations(registrations) {
+  setStoredData(STORAGE_KEYS.registrations, registrations);
+}
+
+function getFeaturedEvent(events) {
+  return events.find((event) => event.featured) || events[0] || null;
+}
+
+function formatDate(dateString) {
+  const date = new Date(`${dateString}T00:00:00`);
+  return new Intl.DateTimeFormat('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric'
+  }).format(date);
+}
+
+function formatTime(timeString) {
+  const [hour, minute] = timeString.split(':').map(Number);
+  const date = new Date();
+  date.setHours(hour, minute);
+  return new Intl.DateTimeFormat('en-US', {
+    hour: 'numeric',
+    minute: '2-digit'
+  }).format(date);
+}
+
+function showToast(message) {
+  toast.textContent = message;
+  toast.classList.add('show');
+  clearTimeout(showToast.timeoutId);
+  showToast.timeoutId = setTimeout(() => {
+    toast.classList.remove('show');
+  }, 2200);
+}
+
+function renderFeaturedEvent() {
+  const events = loadEvents();
+  const featured = getFeaturedEvent(events);
+
+  if (!featured) {
+    featuredEventPanel.innerHTML = '<div class="empty-state">No featured event available.</div>';
+    return;
+  }
+
+  featuredEventPanel.innerHTML = `
+    <div class="featured-content">
+      <div>
+        <span class="featured-tag">Featured Event</span>
+        <h3>${featured.name}</h3>
+        <div class="featured-meta">
+          <span>${featured.category}</span>
+          <span>•</span>
+          <span>${formatDate(featured.date)}</span>
+          <span>•</span>
+          <span>${featured.venue}</span>
+        </div>
+        <p class="featured-description">${featured.description}</p>
+      </div>
+      <div>
+        <div class="featured-actions">
+          <button class="primary-btn" data-event-id="${featured.id}" data-action="register">Register Now</button>
+          <button class="secondary-btn" data-event-id="${featured.id}" data-action="view-events">View All</button>
+        </div>
+      </div>
+    </div>
+  `;
+
+  const registerButton = featuredEventPanel.querySelector('[data-action="register"]');
+  const viewEventsButton = featuredEventPanel.querySelector('[data-action="view-events"]');
+
+  registerButton.addEventListener('click', () => openRegistrationModal(featured.id));
+  viewEventsButton.addEventListener('click', () => document.getElementById('events').scrollIntoView({ behavior: 'smooth' }));
+}
+
+function renderEvents() {
+  const events = loadEvents();
+  const query = eventSearchInput.value.trim().toLowerCase();
+  const category = categoryFilterSelect.value;
+
+  let filteredEvents = events.filter((event) => {
+    const matchesQuery = event.name.toLowerCase().includes(query);
+    const matchesCategory = category === 'all' || event.category === category;
+    return matchesQuery && matchesCategory;
+  });
+
+  if (!filteredEvents.length) {
+    eventList.innerHTML = '<div class="empty-state">No events match your current search or filter.</div>';
+    return;
+  }
+
+  eventList.innerHTML = filteredEvents
+    .map(
+      (event) => `
+        <article class="event-card">
+          <div class="event-card-top">
+            <span class="tag-chip">${event.category}</span>
+            ${event.featured ? '<span class="tag-chip accent">Featured</span>' : ''}
+          </div>
+          <h3>${event.name}</h3>
+          <div class="event-meta">
+            <span>📅 ${formatDate(event.date)}</span>
+            <span>🕒 ${formatTime(event.time)}</span>
+            <span>📍 ${event.venue}</span>
+          </div>
+          <p class="event-description">${event.description}</p>
+          <div class="event-footer">
+            <span class="mini-text">Open for registration</span>
+            <button class="action-btn" data-event-id="${event.id}" data-action="register">Register</button>
+          </div>
+        </article>
+      `
+    )
+    .join('');
+
+  eventList.querySelectorAll('[data-action="register"]').forEach((button) => {
+    button.addEventListener('click', () => openRegistrationModal(button.dataset.eventId));
+  });
+}
+
+function openRegistrationModal(eventId) {
+  currentSelectedEventId = eventId;
+  selectedEventIdInput.value = eventId;
+  modal.classList.remove('hidden');
+  modal.setAttribute('aria-hidden', 'false');
+}
+
+function closeRegistrationModal() {
+  modal.classList.add('hidden');
+  modal.setAttribute('aria-hidden', 'true');
+  registrationForm.reset();
+  selectedEventIdInput.value = '';
+  currentSelectedEventId = null;
+}
+
+function renderAdminEvents() {
+  const events = loadEvents();
+
+  if (!events.length) {
+    adminEventsList.innerHTML = '<div class="empty-state">No events yet. Add the first club event.</div>';
+    return;
+  }
+
+  adminEventsList.innerHTML = events
+    .map(
+      (event) => `
+        <div class="list-item">
+          <div>
+            <h4>${event.name}</h4>
+            <div class="list-meta">
+              <div>${event.category} • ${formatDate(event.date)}</div>
+              <div>${formatTime(event.time)} • ${event.venue}</div>
+            </div>
+          </div>
+          <div class="list-actions">
+            <button class="list-action-btn" data-action="edit-event" data-event-id="${event.id}">Edit</button>
+            <button class="list-action-btn delete" data-action="delete-event" data-event-id="${event.id}">Delete</button>
+          </div>
+        </div>
+      `
+    )
+    .join('');
+
+  adminEventsList.querySelectorAll('[data-action="edit-event"]').forEach((button) => {
+    button.addEventListener('click', () => prepareEventEdit(button.dataset.eventId));
+  });
+
+  adminEventsList.querySelectorAll('[data-action="delete-event"]').forEach((button) => {
+    button.addEventListener('click', () => deleteEvent(button.dataset.eventId));
+  });
+}
+
+function renderRegistrations() {
+  const registrations = loadRegistrations();
+  const query = registrationSearchInput.value.trim().toLowerCase();
+
+  const filteredRegistrations = registrations.filter((entry) => {
+    const searchable = `${entry.name} ${entry.email} ${entry.college} ${entry.eventName}`.toLowerCase();
+    return searchable.includes(query);
+  });
+
+  if (!filteredRegistrations.length) {
+    registrationsList.innerHTML = '<div class="empty-state">No registrations found.</div>';
+    return;
+  }
+
+  registrationsList.innerHTML = filteredRegistrations
+    .map(
+      (entry) => `
+        <div class="registration-row">
+          <div>
+            <strong>${entry.name}</strong>
+            <span>${entry.email}</span>
+          </div>
+          <div>
+            <strong>${entry.eventName}</strong>
+            <span>${entry.college}</span>
+          </div>
+          <div>
+            <strong>${entry.year}</strong>
+            <span>${entry.phone}</span>
+          </div>
+          <div class="list-actions">
+            <button class="list-action-btn delete" data-action="delete-registration" data-registration-id="${entry.id}">Delete</button>
+          </div>
+        </div>
+      `
+    )
+    .join('');
+
+  registrationsList.querySelectorAll('[data-action="delete-registration"]').forEach((button) => {
+    button.addEventListener('click', () => deleteRegistration(button.dataset.registrationId));
+  });
+}
+
+function prepareEventEdit(eventId) {
+  const events = loadEvents();
+  const eventToEdit = events.find((event) => event.id === eventId);
+
+  if (!eventToEdit) return;
+
+  editingEventId = eventId;
+  eventFormTitle.textContent = 'Edit Event';
+  document.getElementById('event-id').value = eventToEdit.id;
+  document.getElementById('event-name').value = eventToEdit.name;
+  document.getElementById('event-category').value = eventToEdit.category;
+  document.getElementById('event-date').value = eventToEdit.date;
+  document.getElementById('event-time').value = eventToEdit.time;
+  document.getElementById('event-venue').value = eventToEdit.venue;
+  document.getElementById('event-description').value = eventToEdit.description;
+  document.getElementById('event-featured').checked = Boolean(eventToEdit.featured);
+
+  document.getElementById('admin').scrollIntoView({ behavior: 'smooth' });
+}
+
+function resetEventForm() {
+  editingEventId = null;
+  eventForm.reset();
+  document.getElementById('event-id').value = '';
+  eventFormTitle.textContent = 'Add New Event';
+}
+
+function saveEvent(event) {
+  const events = loadEvents();
+
+  if (editingEventId) {
+    const index = events.findIndex((item) => item.id === editingEventId);
+    if (index !== -1) {
+      events[index] = { ...events[index], ...event };
+      saveEvents(events);
+      showToast('Event updated successfully.');
+    }
+  } else {
+    events.push({ ...event, id: `evt-${Date.now()}` });
+    saveEvents(events);
+    showToast('Event added successfully.');
+  }
+
+  resetEventForm();
+  renderFeaturedEvent();
+  renderEvents();
+  renderAdminEvents();
+}
+
+function deleteEvent(eventId) {
+  const events = loadEvents();
+  const filteredEvents = events.filter((event) => event.id !== eventId);
+  saveEvents(filteredEvents);
+
+  const registrations = loadRegistrations();
+  const filteredRegistrations = registrations.filter((entry) => entry.eventId !== eventId);
+  saveRegistrations(filteredRegistrations);
+
+  if (editingEventId === eventId) {
+    resetEventForm();
+  }
+
+  renderFeaturedEvent();
+  renderEvents();
+  renderAdminEvents();
+  renderRegistrations();
+  showToast('Event deleted.');
+}
+
+function deleteRegistration(registrationId) {
+  const registrations = loadRegistrations().filter((entry) => entry.id !== registrationId);
+  saveRegistrations(registrations);
+  renderRegistrations();
+  showToast('Registration deleted.');
+}
+
+registrationForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  const eventId = selectedEventIdInput.value;
+  if (!eventId) {
+    showToast('Please select an event first.');
+    return;
+  }
+
+  const event = loadEvents().find((item) => item.id === eventId);
+  if (!event) {
+    showToast('Invalid event selection.');
+    return;
+  }
+
+  const registrationData = {
+    id: `reg-${Date.now()}`,
+    eventId: event.id,
+    eventName: event.name,
+    name: document.getElementById('student-name').value.trim(),
+    email: document.getElementById('student-email').value.trim(),
+    college: document.getElementById('student-college').value.trim(),
+    year: document.getElementById('student-year').value,
+    phone: document.getElementById('student-phone').value.trim()
+  };
+
+  const registrations = loadRegistrations();
+  registrations.push(registrationData);
+  saveRegistrations(registrations);
+
+  closeRegistrationModal();
+  renderRegistrations();
+  showToast(`Registered for ${event.name}!`);
+});
+
+eventForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  const eventData = {
+    name: document.getElementById('event-name').value.trim(),
+    category: document.getElementById('event-category').value,
+    date: document.getElementById('event-date').value,
+    time: document.getElementById('event-time').value,
+    venue: document.getElementById('event-venue').value.trim(),
+    description: document.getElementById('event-description').value.trim(),
+    featured: document.getElementById('event-featured').checked
+  };
+
+  if (!eventData.name || !eventData.date || !eventData.time || !eventData.venue || !eventData.description) {
+    showToast('Please complete all required event details.');
+    return;
+  }
+
+  if (eventData.featured) {
+    const events = loadEvents();
+    events.forEach((item) => {
+      if (item.id !== editingEventId) item.featured = false;
+    });
+    saveEvents(events);
+  }
+
+  saveEvent(eventData);
+});
+
+cancelEditButton.addEventListener('click', resetEventForm);
+
+document.querySelector('[data-close-modal="true"]').addEventListener('click', closeRegistrationModal);
+
+document.querySelectorAll('[data-close-modal="true"]').forEach((button) => {
+  button.addEventListener('click', closeRegistrationModal);
+});
+
+document.getElementById('show-admin').addEventListener('click', () => {
+  document.getElementById('admin').scrollIntoView({ behavior: 'smooth' });
+});
+
+if (eventSearchInput) {
+  eventSearchInput.addEventListener('input', renderEvents);
+}
+
+if (categoryFilterSelect) {
+  categoryFilterSelect.addEventListener('change', renderEvents);
+}
+
+if (registrationSearchInput) {
+  registrationSearchInput.addEventListener('input', renderRegistrations);
+}
+
+function bootstrap() {
+  const events = loadEvents();
+  const registrations = loadRegistrations();
+
+  if (!events.length) {
+    saveEvents(defaultEvents);
+  }
+
+  if (!registrations.length) {
+    saveRegistrations(defaultRegistrations);
+  }
+
+  renderFeaturedEvent();
+  renderEvents();
+  renderAdminEvents();
+  renderRegistrations();
+}
+
+bootstrap();
